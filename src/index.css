@@ -1,0 +1,188 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "ShadowsIntoLight";
+  src: url("./assets/ShadowsIntoLight-Regular.ttf");
+}
+
+* {
+  font-family: "ShadowsIntoLight";
+}
+
+body {
+  margin: 0;
+  background-color: white;
+}
+
+.page-title {
+  font-size: 50px;
+}
+
+.home-page {
+  background-image: url("./assets/blob10.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 150%;
+  height: 100vh;
+  padding: 2%;
+}
+
+.card-title {
+  font-size: 30px;
+  padding-bottom: 3%;
+  border-bottom: solid #b8d6a5;
+}
+
+.card-info {
+  font-size: 18px;
+}
+
+.bottom-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 5% 15%;
+  position: fixed;
+  bottom: 1%;
+  left: 2%;
+  right: 2%;
+}
+
+.checkboxes {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tab {
+  width: 50%;
+  color: black;
+}
+
+.tabs {
+  margin-top: 3%;
+  width: 100%;
+  justify-content: center;
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  flex: end;
+}
+
+.bold {
+  font-weight: bolder;
+}
+
+.add-button {
+  position: fixed;
+  bottom: 11%;
+  left: 80%;
+  right: 0%;
+}
+
+.new-class-page {
+  background-image: url("./assets/blob10.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 180%;
+  height: 100vh;
+  padding: 2%;
+}
+
+.new-class-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 80vh;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-white {
+  background-color: white;
+  color: black;
+  width: 16%;
+}
+
+.time-range {
+  display: flex;
+  justify-content: center;
+}
+
+.label {
+  color: #ebf4e7;
+  display: flex;
+  justify-content: center;
+}
+
+.prev-next {
+  width: 40%;
+  font-size: 35px;
+}
+
+.form-title {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.choose-days-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.react-ios-time-picker-container {
+  background-color: #b8d6a5;
+}
+
+.react-ios-time-picker-selected-overlay,
+.react-ios-time-picker-btn-container {
+  background-color: #5a7c65;
+}
+
+.react-ios-time-picker-btn {
+  color: white;
+  font-size: larger;
+}
+.react-ios-time-picker-input {
+  background-color: white;
+  width: 50%;
+  text-align: center;
+}
+
+.react-ios-time-picker-cell-inner-hour:hover,
+.react-ios-time-picker-cell-inner-minute:hover,
+.react-ios-time-picker-cell-inner-hour-format:hover {
+  background-color: #f9e5e4;
+  color: black;
+}
+
+.start-end-time {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 4%;
+}
+.time-pickers {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.checkbox {
+  border: black solid 0.1px;
+}
+
+.cursor-pointer {
+  gap: 8px;
+}

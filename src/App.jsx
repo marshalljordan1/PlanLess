@@ -1,9 +1,6 @@
-function App() {
-  return (
-    <>
-      <p>FINAL PROJECT</p>
-    </>
-  );
-}
+import React from "react";
+import Routes from "./Routes/Routes";
+
+export const App = () => <Routes />;
 
 export default App;
