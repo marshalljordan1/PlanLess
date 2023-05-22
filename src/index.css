@@ -17,7 +17,17 @@ body {
 }
 
 .page-title {
+  padding-top: 0px;
   font-size: 50px;
+  text-align: center;
+  width: 100%;
+}
+
+.no-classes {
+  padding-top: 0px;
+  font-size: 30px;
+  text-align: center;
+  width: 100%;
 }
 
 .home-page {
@@ -25,8 +35,25 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 150%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   height: 100vh;
-  padding: 2%;
+  padding: 0% 2%;
+}
+
+.calendar-icon {
+  font-size: 25px;
+}
+
+.carousel {
+  margin-top: 5%;
+  width: 100%;
+}
+
+.carousel-item {
+  width: 80%;
+  border-radius: 10px;
 }
 
 .card-title {
@@ -39,14 +66,18 @@ body {
   font-size: 18px;
 }
 
+.top-navbar {
+  width: 100vw;
+}
+
 .bottom-nav {
   display: flex;
   justify-content: space-between;
   padding: 5% 15%;
   position: fixed;
-  bottom: 1%;
-  left: 2%;
-  right: 2%;
+  bottom: 0%;
+  left: 0;
+  right: 0%;
 }
 
 .checkboxes {
@@ -82,23 +113,38 @@ body {
   bottom: 11%;
   left: 80%;
   right: 0%;
+  background-color: #ebdec1;
+  border-color: #5a7c65;
 }
 
 .new-class-page {
-  background-image: url("./assets/blob10.svg");
+  height: 100vh;
+  background-color: #fefae0;
+  padding: 30px 0 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("./assets/blob5.svg");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 180%;
-  height: 100vh;
-  padding: 2%;
+  background-size: 240%;
 }
 
 .new-class-form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
-  height: 80vh;
+  justify-content: center;
+  padding: 20% 5% 22% 5%;
+  margin: 55px;
+  width: 80%;
+  height: 70vh;
+  background-color: white;
+  background-image: url("./assets/blob1.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 400%;
+  border-radius: 50px;
 }
 
 .btn-group {
@@ -112,17 +158,6 @@ body {
   width: 16%;
 }
 
-.time-range {
-  display: flex;
-  justify-content: center;
-}
-
-.label {
-  color: #ebf4e7;
-  display: flex;
-  justify-content: center;
-}
-
 .prev-next {
   width: 40%;
   font-size: 35px;
@@ -131,52 +166,8 @@ body {
 .form-title {
   font-size: 20px;
   display: flex;
+  margin: 10px 0;
   justify-content: center;
-}
-
-.choose-days-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.react-ios-time-picker-container {
-  background-color: #b8d6a5;
-}
-
-.react-ios-time-picker-selected-overlay,
-.react-ios-time-picker-btn-container {
-  background-color: #5a7c65;
-}
-
-.react-ios-time-picker-btn {
-  color: white;
-  font-size: larger;
-}
-.react-ios-time-picker-input {
-  background-color: white;
-  width: 50%;
-  text-align: center;
-}
-
-.react-ios-time-picker-cell-inner-hour:hover,
-.react-ios-time-picker-cell-inner-minute:hover,
-.react-ios-time-picker-cell-inner-hour-format:hover {
-  background-color: #f9e5e4;
-  color: black;
-}
-
-.start-end-time {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 4%;
-}
-.time-pickers {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
 }
 
 .checkbox {
@@ -185,4 +176,47 @@ body {
 
 .cursor-pointer {
   gap: 8px;
+}
+
+.submit {
+  margin-top: 5%;
+  display: flex;
+  justify-content: center;
+}
+
+.level-btn::before :hover {
+  background-color: transparent;
+}
+
+.date-time-input {
+  display: flex;
+  justify-content: center;
+}
+
+.time-pickers,
+.date-pickers {
+  margin: 0 30px 0 20px;
+}
+
+.card {
+  margin-top: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 96%;
+  gap: 5%;
+}
+
+.summary-buttons {
+  height: 100%;
+  text-align: center;
+  font-size: 25px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.number {
+  font-size: 70px;
+  margin-bottom: 20%;
 }

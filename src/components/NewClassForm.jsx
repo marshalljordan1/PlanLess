@@ -1,52 +1,51 @@
-import React, { useState } from "react";
-import DaysList from "./DaysList";
+import React, { useContext } from "react";
+import Schedule from "./Schedule";
 import LevelList from "./LevelList";
-import { TimePicker } from "react-ios-time-picker";
+import { ClassListContext } from "../context/ClassListContext";
 
 const NewClassForm = () => {
-  const [value, setValue] = useState("10:00");
+  const {
+    handleClassName,
+    className,
+    handleLevel,
+    handleDay,
+    handleStartTime,
+    startTime,
+    handleEndTime,
+    endTime,
+    saveData,
+    handleSubmit,
+  } = useContext(ClassListContext);
 
-  const onChange = (timeValue) => {
-    setValue(timeValue);
-  };
   return (
     <>
-      <div className="new-class-form">
-        <div>
-          <div className="form-title">Class Name:</div>
-          <input
-            type="text"
-            placeholder="Beginners"
-            className="input input-bordered input-primary w-full max-w-xs shadow-lg bg-white"
-          />
-        </div>
-        <div>
-          <h5 className="form-title">Level: </h5>
-          <LevelList />
-        </div>
+      <div className="new-class-form shadow-xl">
+        <form onSubmit={handleSubmit}>
+          <div>
+            <div className="form-title">Class Name:</div>
+            <input
+              type="text"
+              placeholder="Beginners"
+              className="input input-bordered input-primary w-full max-w-xs shadow-lg bg-white"
+              onChange={handleClassName}
+              value={className}
+            />
+          </div>
+          <div>
+            <h5 className="form-title">Level: </h5>
+            <LevelList onChange={handleLevel} />
+          </div>
 
-        <div>
-          <h5 className="form-title">Schedule: </h5>
-          <DaysList />
-          <div className="start-end-time">
-            <div className="time-pickers">
-              <div className="form-title">Start Time:</div>
-              <TimePicker
-                onChange={onChange}
-                value={value}
-                className="bg-primary"
-              />
-            </div>
-            <div className="time-pickers">
-              <div className="form-title">End Time:</div>
-              <TimePicker
-                onChange={onChange}
-                value={value}
-                className="bg-primary"
-              />
+          <div>
+            <h5 className="form-title">Schedule: </h5>
+            <Schedule />
+            <div className="submit">
+              <button type="submit" className="btn btn-primary shadow-xl">
+                submit
+              </button>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </>
   );
