@@ -1,17 +1,23 @@
 import BottomNavbar from "../components/BottomNavbar";
 import ClassCarousel from "../components/ClassCarousel";
 import TopNavbar from "../components/TopNavbar";
-import Tabs from "../components/Tabs";
-import AddButton from "../components/AddButton";
+import CircleButton from "../components/CircleButton";
+import { AiOutlinePlus } from "react-icons/ai";
+import SummaryCard from "../components/SummaryCard";
+import CommunityCard from "../components/CommunityCard";
 
 const HomePage = () => {
   return (
     <>
       <div className="home-page">
         <TopNavbar />
-        <Tabs />
+        <SummaryCard />
         <ClassCarousel />
-        <AddButton />
+        <CommunityCard />
+        <CircleButton
+          icon={<AiOutlinePlus size={24} className="text-secondary-content" />}
+          to="/new-class"
+        />
         <BottomNavbar />
       </div>
     </>
