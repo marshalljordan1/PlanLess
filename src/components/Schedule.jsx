@@ -2,8 +2,17 @@ import { useContext } from "react";
 import { ClassListContext } from "../context/ClassListContext";
 
 const Schedule = () => {
-  const { handleStartDate, handleEndDate, startDate, endDate } =
-    useContext(ClassListContext);
+  const {
+    handleStartDate,
+    handleEndDate,
+    startDate,
+    endDate,
+    handleStartTime,
+    handleEndTime,
+    startTime,
+    endTime,
+    isChecked,
+  } = useContext(ClassListContext);
   return (
     <>
       <div className="date-time-input">
@@ -11,26 +20,34 @@ const Schedule = () => {
           Start date: <br />
           <input
             type="date"
-            className="start-date rounded-box p-1 shadow-xl"
+            className="date-inputs rounded-box p-1 shadow-xl"
+            onChange={handleStartDate}
+            value={startDate}
           ></input>
           <br />
           End date: <br />
           <input
             type="date"
-            className="end-date rounded-box p-1 shadow-xl"
+            className="date-inputs rounded-box p-1 shadow-xl"
+            onChange={handleEndDate}
+            value={endDate}
           ></input>
         </div>
         <div className="time-pickers">
           Start Time: <br />
           <input
             type="time"
-            className="start-time rounded-box p-1 shadow-xl"
+            className="time-inputs rounded-box p-1 shadow-xl"
+            onChange={handleStartTime}
+            value={startTime}
           ></input>
           <br />
           End Time: <br />
           <input
             type="time"
-            className="end-time rounded-box p-1 shadow-xl"
+            className="time-inputs rounded-box p-1 shadow-xl"
+            onChange={handleEndTime}
+            value={endTime}
           ></input>
         </div>
       </div>

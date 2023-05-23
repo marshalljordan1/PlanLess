@@ -18,8 +18,12 @@ const ClassCarousel = () => {
                     {item.level}
                   </p>
                   <p>
+                    <span className="bold">Start/End Date: </span>
+                    {`${item.startDate} - ${item.endDate}`}
+                  </p>
+                  <p>
                     <span className="bold">Schedule: </span>
-                    {`${item.startDate} - ${item.endDate}, ${item.startTime} - ${item.endTime}`}
+                    {`${item.startTime} - ${item.endTime}`}
                   </p>
                 </div>
                 <div className="card-actions justify-end">

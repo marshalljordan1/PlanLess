@@ -10,6 +10,7 @@ export const ClassListContextProvider = ({ children }) => {
   const [startTime, setStartTime] = useState();
   const [endTime, setEndTime] = useState();
   const [classList, setClassList] = useState([]);
+  const [submitted, setSubmitted] = useState(false);
 
   const saveData = () => {
     const newClass = {
@@ -26,34 +27,43 @@ export const ClassListContextProvider = ({ children }) => {
     const updatedClasses = [...existingClasses, newClass];
     localStorage.setItem("classList", JSON.stringify(updatedClasses));
     setClassList(updatedClasses);
+    console.log(classList);
   };
 
   const handleClassName = (event) => {
     setClassName(event.target.value);
+    setSubmitted(false);
   };
 
   const handleLevel = (selectedLevel) => {
     setLevel(selectedLevel);
+    setSubmitted(false);
   };
 
   const handleStartDate = (event) => {
+    console.log(event.target.value);
     setStartDate(event.target.value);
+    setSubmitted(false);
   };
 
   const handleEndDate = (event) => {
     setEndDate(event.target.value);
+    setSubmitted(false);
   };
 
   const handleStartTime = (event) => {
     setStartTime(event.target.value);
+    setSubmitted(false);
   };
   const handleEndTime = (event) => {
     setEndTime(event.target.value);
+    setSubmitted(false);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault(); // Prevent form submission
-    saveData(); // Call the saveData function from the context
+    saveData();
+    setSubmitted(true); // Call the saveData function from the context
   };
 
   return (
@@ -71,9 +81,10 @@ export const ClassListContextProvider = ({ children }) => {
         startTime,
         handleEndTime,
         endTime,
+        handleSubmit,
         saveData,
         classList,
-        handleSubmit,
+        submitted,
       }}
     >
       {children}

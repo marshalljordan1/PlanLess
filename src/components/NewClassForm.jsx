@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import Schedule from "./Schedule";
 import LevelList from "./LevelList";
 import { ClassListContext } from "../context/ClassListContext";
+import CircleButton from "./CircleButton";
+import { TfiAngleRight } from "react-icons/tfi";
 
 const NewClassForm = () => {
   const {
@@ -15,6 +17,7 @@ const NewClassForm = () => {
     endTime,
     saveData,
     handleSubmit,
+    submitted,
   } = useContext(ClassListContext);
 
   return (
@@ -26,7 +29,7 @@ const NewClassForm = () => {
             <input
               type="text"
               placeholder="Beginners"
-              className="input input-bordered input-primary w-full max-w-xs shadow-lg bg-white"
+              className="input input-bordered border-primary w-full max-w-xs shadow-lg bg-white"
               onChange={handleClassName}
               value={className}
             />
@@ -40,9 +43,21 @@ const NewClassForm = () => {
             <h5 className="form-title">Schedule: </h5>
             <Schedule />
             <div className="submit">
-              <button type="submit" className="btn btn-primary shadow-xl">
-                submit
-              </button>
+              {submitted === false ? (
+                <button type="submit" className="btn btn-primary shadow-xl">
+                  Submit
+                </button>
+              ) : (
+                <CircleButton
+                  to="/plan-class"
+                  icon={
+                    <TfiAngleRight
+                      size={24}
+                      className="text-secondary-content"
+                    />
+                  }
+                />
+              )}
             </div>
           </div>
         </form>
