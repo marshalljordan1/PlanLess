@@ -9,8 +9,8 @@ import CommunityCard from "../components/CommunityCard";
 const HomePage = () => {
   return (
     <>
+      <TopNavbar />
       <div className="home-page">
-        <TopNavbar />
         <SummaryCard />
         <ClassCarousel />
         <CommunityCard />

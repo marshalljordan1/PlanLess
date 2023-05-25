@@ -1,11 +1,11 @@
 import { IoIosMenu } from "react-icons/io";
 import { AiOutlineCalendar } from "react-icons/ai";
-
+import { Link } from "react-router-dom";
 const TopNavbar = () => {
   return (
     <div className="flex bg-primary p-4 items-center top-navbar">
       <div className="flex-none">
-        <div className="w-10 h-10 rounded-full ms-1 border"></div>
+        <div className="w-10 h-10 rounded-full ms-1 border border-primary-content"></div>
       </div>
       <div className="flex-1">
         <div className="ms-3 ">
@@ -18,10 +18,12 @@ const TopNavbar = () => {
         </div>
       </div>
       <div className="flex-none">
-        <button className="btn bg-transparent btn-square border-none text-secondary-focus calendar-icon">
-          <AiOutlineCalendar />
-        </button>
-        <button className="btn bg-transparent btn-square border-none text-secondary-focus">
+        <Link to="/calendar">
+          <button className="btn bg-transparent btn-square border-none text-primary-content calendar-icon">
+            <AiOutlineCalendar />
+          </button>
+        </Link>
+        <button className="btn bg-transparent btn-square border-none text-primary-content">
           <IoIosMenu size={24} />
         </button>
       </div>

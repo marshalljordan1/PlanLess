@@ -1,7 +1,10 @@
+import BottomNavbar from "../components/BottomNavbar";
+
 const NewPlan = () => {
   return (
     <>
-      <p>NewPlan</p>
+      <div className="new-plan-page"></div>
+      <BottomNavbar />
     </>
   );
 };
