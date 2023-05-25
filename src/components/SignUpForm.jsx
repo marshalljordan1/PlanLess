@@ -53,9 +53,11 @@ const SignUpForm = () => {
                 </div>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary" onClick={handleSignUp}>
-                  Sign Up
-                </button>
+                <Link to="/home">
+                  <button className="btn btn-primary" onClick={handleSignUp}>
+                    Sign Up
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
