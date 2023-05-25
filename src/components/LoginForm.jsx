@@ -58,9 +58,11 @@ const LoginForm = () => {
                 </div>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary" onClick={handleLogin}>
-                  Login
-                </button>
+                <Link to="/home">
+                  <button className="btn btn-primary" onClick={handleLogin}>
+                    Login
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
