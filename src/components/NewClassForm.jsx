@@ -6,19 +6,8 @@ import CircleButton from "./CircleButton";
 import { TfiAngleRight } from "react-icons/tfi";
 
 const NewClassForm = () => {
-  const {
-    handleClassName,
-    className,
-    handleLevel,
-    handleDay,
-    handleStartTime,
-    startTime,
-    handleEndTime,
-    endTime,
-    saveData,
-    handleSubmit,
-    submitted,
-  } = useContext(ClassListContext);
+  const { handleClassName, className, handleLevel, handleSubmit, submitted } =
+    useContext(ClassListContext);
 
   return (
     <>

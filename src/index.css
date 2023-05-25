@@ -23,15 +23,16 @@ body {
 }
 
 .no-classes {
-  padding-top: 5%;
   font-size: 30px;
   text-align: center;
-  width: 100%;
+  display: flex;
+  align-items: center;
+  width: 100vw;
 }
 
 .home-page {
   height: 100vh;
-  padding: 18% 2% 0 2%;
+  padding: 20% 2% 0 2%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -55,7 +56,9 @@ body {
 .card-title {
   font-size: 30px;
   padding-bottom: 3%;
-  border-bottom: solid #b8d6a5;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: solid #5a7c65;
 }
 
 .card-info {
@@ -207,16 +210,17 @@ body {
 
 .summary-buttons {
   height: 100%;
+  width: 30%;
   text-align: center;
-  font-size: 25px;
-  padding: 10px;
+  font-size: 17px;
+  padding: 10px 0;
   display: flex;
   flex-direction: column;
 }
 
 .number {
-  font-size: 70px;
-  margin-bottom: 20%;
+  font-size: 35px;
+  margin-bottom: 15%;
 }
 
 .new-plan-page {
@@ -226,4 +230,15 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.hero-content {
+  width: 95%;
+}
+
+.already-registered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3%;
 }
