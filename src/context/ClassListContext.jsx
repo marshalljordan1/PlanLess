@@ -89,10 +89,12 @@ export const ClassListContextProvider = ({ children }) => {
       setId(id + 1);
       saveData();
       setCheckedDays([]);
-      setStartDate("");
-      setEndDate("");
-      setStartTime("12:00");
-      setEndTime("12:00");
+      setClassName(""); // Reset className
+      setLevel(""); // Reset level
+      setStartDate(""); // Reset startDate
+      setEndDate(""); // Reset endDate
+      setStartTime("12:00"); // Reset startTime
+      setEndTime("12:00"); // Reset endTime
       setSubmitted(true); // Call the saveData function from the context
     }
   };

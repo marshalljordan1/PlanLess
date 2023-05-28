@@ -3,10 +3,8 @@ import { AiOutlineCalendar } from "react-icons/ai";
 import { Link } from "react-router-dom";
 const TopNavbar = () => {
   return (
-    <div className="flex bg-primary p-4 items-center top-navbar">
-      <div className="flex-none">
-        <div className="w-10 h-10 rounded-full ms-1 border border-primary-content"></div>
-      </div>
+    <div className="navbar top-navbar bg-primary p-4 items-center">
+      <div className="w-10 h-10 rounded-full ms-1 border border-primary-content"></div>
       <div className="flex-1">
         <div className="ms-3 ">
           <p className="ms-3 text-base-100 text-xl text-primary-content">

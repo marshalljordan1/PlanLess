@@ -5,7 +5,7 @@ import { ClassListContext } from "../context/ClassListContext";
 import CircleButton from "./CircleButton";
 import { TfiAngleRight } from "react-icons/tfi";
 
-const NewClassForm = () => {
+const LessonPlan = () => {
   const { handleClassName, className, handleLevel, handleSubmit, submitted } =
     useContext(ClassListContext);
 
@@ -13,12 +13,12 @@ const NewClassForm = () => {
     <>
       <div className="new-class-form shadow-xl">
         <form onSubmit={handleSubmit}>
-          <div className="class-name-input">
+          <div>
             <div className="form-title">Class Name:</div>
             <input
               type="text"
               placeholder="Beginners"
-              className="input input-bordered border-primary w-full shadow-xl bg-white"
+              className="input input-bordered border-primary w-full max-w-xs shadow-lg bg-white"
               onChange={handleClassName}
               value={className}
             />
@@ -55,4 +55,4 @@ const NewClassForm = () => {
   );
 };
 
-export default NewClassForm;
+export default LessonPlan;

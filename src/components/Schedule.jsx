@@ -53,73 +53,71 @@ const Schedule = () => {
         </div>
       </div>
       <div className="form-title">Choose Days:</div>
-      <div className="bg-white border border-gray-300 rounded-box shadow-lg">
-        <div className="form-control checkboxes shadow-lg">
-          <label className="cursor-pointer label">
-            <input
-              type="checkbox"
-              className="checkbox checkbox-secondary"
-              value="Mon"
-              onChange={handleCheckboxChange}
-            />
-            <span className="label-text">Monday</span>
-          </label>
-          <label className="cursor-pointer label">
-            <input
-              type="checkbox"
-              className="checkbox checkbox-secondary"
-              value="Tue"
-              onChange={handleCheckboxChange}
-            />
-            <span className="label-text">Tuesday</span>
-          </label>
-          <label className="cursor-pointer label">
-            <input
-              type="checkbox"
-              className="checkbox checkbox-secondary"
-              value="Wed"
-              onChange={handleCheckboxChange}
-            />
-            <span className="label-text">Wednesday</span>
-          </label>
-          <label className="cursor-pointer label">
-            <input
-              type="checkbox"
-              className="checkbox checkbox-secondary"
-              value="Thu"
-              onChange={handleCheckboxChange}
-            />
-            <span className="label-text">Thursday</span>
-          </label>
-          <label className="cursor-pointer label">
-            <input
-              type="checkbox"
-              className="checkbox checkbox-secondary"
-              value="Fri"
-              onChange={handleCheckboxChange}
-            />
-            <span className="label-text">Friday</span>
-          </label>
-          <label className="cursor-pointer label">
-            <input
-              type="checkbox"
-              className="checkbox checkbox-secondary"
-              value="Sat"
-              onChange={handleCheckboxChange}
-            />
-            <span className="label-text">Saturday</span>
-          </label>
-          <label className="cursor-pointer label">
-            <input
-              type="checkbox"
-              className="checkbox checkbox-secondary"
-              checked={!isChecked}
-              value="Sun"
-              onChange={handleCheckboxChange}
-            />
-            <span className="label-text">Sunday</span>
-          </label>
-        </div>
+      <div className=""></div>
+      <div className="checkboxes bg-white shadow-lg">
+        <label className="cursor-pointer label">
+          <input
+            type="checkbox"
+            className="checkbox checkbox-secondary"
+            value="Mon"
+            onChange={handleCheckboxChange}
+          />
+          <span className="label-text">Monday</span>
+        </label>
+        <label className="cursor-pointer label">
+          <input
+            type="checkbox"
+            className="checkbox checkbox-secondary"
+            value="Tue"
+            onChange={handleCheckboxChange}
+          />
+          <span className="label-text">Tuesday</span>
+        </label>
+        <label className="cursor-pointer label">
+          <input
+            type="checkbox"
+            className="checkbox checkbox-secondary"
+            value="Wed"
+            onChange={handleCheckboxChange}
+          />
+          <span className="label-text">Wednesday</span>
+        </label>
+        <label className="cursor-pointer label">
+          <input
+            type="checkbox"
+            className="checkbox checkbox-secondary"
+            value="Thu"
+            onChange={handleCheckboxChange}
+          />
+          <span className="label-text">Thursday</span>
+        </label>
+        <label className="cursor-pointer label">
+          <input
+            type="checkbox"
+            className="checkbox checkbox-secondary"
+            value="Fri"
+            onChange={handleCheckboxChange}
+          />
+          <span className="label-text">Friday</span>
+        </label>
+        <label className="cursor-pointer label">
+          <input
+            type="checkbox"
+            className="checkbox checkbox-secondary"
+            value="Sat"
+            onChange={handleCheckboxChange}
+          />
+          <span className="label-text">Saturday</span>
+        </label>
+        <label className="cursor-pointer label">
+          <input
+            type="checkbox"
+            className="checkbox checkbox-secondary"
+            value="Sun"
+            onChange={handleCheckboxChange}
+          />
+          <span className="label-text">Sunday</span>
+        </label>
       </div>
     </>
   );

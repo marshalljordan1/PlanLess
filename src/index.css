@@ -18,6 +18,7 @@ body {
 
 .page-title {
   font-size: 40px;
+  margin: 5%;
   text-align: center;
   width: 100%;
 }
@@ -27,15 +28,17 @@ body {
   text-align: center;
   display: flex;
   align-items: center;
-  width: 100vw;
+  width: 100%;
 }
 
 .home-page {
-  height: 100vh;
-  padding: 20% 2% 0 2%;
+  min-height: 100vh;
+  height: 100%;
+  padding: 20% 2% 40% 2%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   background-color: white;
 }
 
@@ -49,12 +52,18 @@ body {
 }
 
 .carousel-item {
-  width: 80%;
+  width: 85%;
   border-radius: 10px;
+  overflow: hidden;
+  padding: 0%;
+}
+
+.carousel-body {
+  padding: 5%;
 }
 
 .card-title {
-  font-size: 30px;
+  font-size: 25px;
   padding-bottom: 3%;
   display: flex;
   justify-content: space-between;
@@ -62,12 +71,17 @@ body {
 }
 
 .card-info {
-  font-size: 18px;
+  font-size: 15px;
 }
 
 .top-navbar {
-  width: 100vw;
+  display: flex;
+  justify-content: space-between;
   position: fixed;
+  top: 0%;
+  left: 0;
+  right: 0;
+  z-index: 999;
 }
 
 .bottom-nav {
@@ -75,9 +89,9 @@ body {
   justify-content: space-between;
   padding: 5% 15%;
   position: fixed;
-  bottom: 0%;
+  bottom: 0;
   left: 0;
-  right: 0%;
+  right: 0;
 }
 
 .checkboxes {
@@ -85,8 +99,10 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  border: solid #5a7c65;
+  border: solid #5a7c65 1px;
   border-radius: 10px;
+  margin-left: 10%;
+  width: 80%;
 }
 
 .tab {
@@ -120,30 +136,42 @@ body {
 }
 
 .new-class-page {
-  height: 100vh;
-  padding: 25% 0 0px 0;
+  height: 100%;
+  padding: 20% 2% 40% 2%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   background-color: white;
 }
 
 .new-class-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  padding: 10%;
-  margin-top: 3%;
+  align-items: center;
+  padding: 8% 0;
   width: 80%;
   height: 75%;
   background-color: #cde2c1;
   border-radius: 50px;
 }
 
+.class-name-input {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10%;
+  align-items: center;
+  width: 80%;
+}
+
 .btn-group {
   display: flex;
   justify-content: center;
+  width: 80%;
+  margin-left: 10%;
+  overflow: hidden;
+  box-shadow: -4px 0 transparent;
 }
 
 .btn-white {
@@ -191,7 +219,8 @@ body {
 
 .time-inputs,
 .date-inputs {
-  border: solid #5a7c65;
+  border: solid #5a7c65 1px;
+  background-color: white;
 }
 
 .time-pickers,
@@ -232,8 +261,36 @@ body {
   align-items: center;
 }
 
+.welcome-page {
+  height: 100vh;
+  background-color: white;
+  background-image: url("./assets/blob4.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 200%;
+  padding: 30px 0 100px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .hero-content {
-  width: 95%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+.hero-text {
+  width: 60%;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  margin-bottom: 5%;
+}
+
+.line-calendar {
+  width: 60%;
+  margin-bottom: -10%;
 }
 
 .already-registered {
