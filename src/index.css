@@ -7,20 +7,32 @@
   src: url("./assets/ShadowsIntoLight-Regular.ttf");
 }
 
+@font-face {
+  font-family: "ShantelSans";
+  src: url("./assets/ShantellSans-Regular.ttf");
+}
+
+@font-face {
+  font-family: "ShantelSansBold";
+  src: url("./assets/ShantellSans-Bold.ttf");
+}
+
 * {
   font-family: "ShadowsIntoLight";
 }
 
+html.element.style,
 body {
   margin: 0;
   background-color: white;
 }
 
 .page-title {
-  font-size: 40px;
+  font-size: 30px;
   margin: 5%;
   text-align: center;
   width: 100%;
+  font-family: "ShantelSans";
 }
 
 .no-classes {
@@ -34,7 +46,7 @@ body {
 .home-page {
   min-height: 100vh;
   height: 100%;
-  padding: 20% 2% 40% 2%;
+  padding: 15% 2% 40% 2%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -63,11 +75,11 @@ body {
 }
 
 .card-title {
-  font-size: 25px;
-  padding-bottom: 3%;
+  font-family: "ShantelSans";
+  font-size: 20px;
   display: flex;
   justify-content: space-between;
-  border-bottom: solid #5a7c65;
+  margin-bottom: 5px;
 }
 
 .card-info {
@@ -84,10 +96,14 @@ body {
   z-index: 999;
 }
 
+.teacher-name {
+  font-family: "ShantelSans";
+}
+
 .bottom-nav {
   display: flex;
   justify-content: space-between;
-  padding: 5% 15%;
+  padding: 0 15%;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -103,17 +119,6 @@ body {
   border-radius: 10px;
   margin-left: 10%;
   width: 80%;
-}
-
-.tab {
-  width: 50%;
-  color: black;
-}
-
-.tabs {
-  margin-top: 3%;
-  width: 100%;
-  justify-content: center;
 }
 
 .card-info {
@@ -135,6 +140,7 @@ body {
   border-color: #100f0f solid;
 }
 
+.new-plan-page,
 .new-class-page {
   height: 100%;
   padding: 20% 2% 40% 2%;
@@ -163,6 +169,11 @@ body {
   margin-left: 10%;
   align-items: center;
   width: 80%;
+}
+
+.input {
+  font-family: "ShantelSans";
+  width: 100%;
 }
 
 .btn-group {
@@ -252,50 +263,58 @@ body {
   margin-bottom: 15%;
 }
 
-.new-plan-page {
-  height: 100vh;
-  background-color: white;
-  padding: 30px 0 20px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .welcome-page {
   height: 100vh;
   background-color: white;
   background-image: url("./assets/blob4.svg");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 200%;
-  padding: 30px 0 100px 0;
+  background-size: 170%;
+  margin: -15% 0 0 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+.welcome-button-container {
+  margin-top: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 3%;
+}
+
 .hero-content {
-  width: 80%;
+  width: 90%;
   display: flex;
   flex-direction: column;
+  padding: 0px 0px;
 }
 .hero-text {
-  width: 60%;
+  width: 80%;
   display: flex;
   text-align: center;
   flex-direction: column;
-  margin-bottom: 5%;
+  font-size: larger;
 }
 
 .line-calendar {
   width: 60%;
-  margin-bottom: -10%;
+  margin: -15% 0 -30px 0;
 }
 
 .already-registered {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 3%;
   gap: 3%;
+}
+
+.lesson-objectives {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }

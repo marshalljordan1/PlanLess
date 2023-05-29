@@ -7,7 +7,7 @@ const Hero = () => {
       <div className="hero-content">
         <img src={lineCalendar} className="line-calendar" alt="Image 2" />
         <h1 className="page-title text-secondary-content">
-          Effortlessy plan your lessons with PlanLess
+          Welcome to PlanLess
         </h1>
       </div>
       <div className="hero-text text-secondary-content">
@@ -16,9 +16,14 @@ const Hero = () => {
           share lesson plans on the run
         </p>
       </div>
-      <Link to="/home" className="hero-button-container">
-        <button className="btn btn-primary shadow-xl">Let's plan</button>
-      </Link>
+      <div className="welcome-button-container">
+        <Link to="/sign-up" className="hero-button-container">
+          <button className="btn btn-primary shadow-xl">Sign up</button>
+        </Link>
+        <Link to="/log-in" className="hero-button-container">
+          <button className="btn btn-primary shadow-xl">Log in</button>
+        </Link>
+      </div>
     </>
   );
 };

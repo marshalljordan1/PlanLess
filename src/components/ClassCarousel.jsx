@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import { BsTrash } from "react-icons/bs";
 const ClassCarousel = () => {
   const { classList, handleDelete } = useContext(ClassListContext);
-
-  console.log(classList);
   return (
     <>
       {" "}
@@ -77,7 +75,7 @@ const ClassCarousel = () => {
               </h2>
               <div className="card-actions justify-end">
                 <Link to="/new-class">
-                  <button className="btn btn-primary text-white shadow-lg">
+                  <button className="btn btn-primary text-white shadow-lg btn-sm">
                     Plan
                   </button>
                 </Link>

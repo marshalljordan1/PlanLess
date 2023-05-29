@@ -6,8 +6,12 @@ const SignUpForm = () => {
   const {
     email,
     password,
+    teacherName,
+    subject,
     handleEmailChange,
     handlePasswordChange,
+    handleTeacherName,
+    handleSubject,
     handleSignUp,
     alert,
   } = useContext(SignUpContext);
@@ -24,11 +28,35 @@ const SignUpForm = () => {
               {alert && <div className="alert">{alert}</div>}
               <div className="form-control">
                 <label className="label">
+                  <span className="label-text">Full Name</span>
+                </label>
+                <input
+                  type="name"
+                  placeholder="Name"
+                  className="input input-bordered"
+                  value={teacherName}
+                  onChange={handleTeacherName}
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Subject</span>
+                </label>
+                <input
+                  type="name"
+                  placeholder="Subject"
+                  className="input input-bordered"
+                  value={subject}
+                  onChange={handleSubject}
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
                   <span className="label-text">Email</span>
                 </label>
                 <input
                   type="text"
-                  placeholder="email"
+                  placeholder="Email"
                   className="input input-bordered"
                   value={email}
                   onChange={handleEmailChange}
@@ -40,24 +68,22 @@ const SignUpForm = () => {
                 </label>
                 <input
                   type="password"
-                  placeholder="password"
+                  placeholder="Password"
                   className="input input-bordered"
                   value={password}
                   onChange={handlePasswordChange}
                 />
                 <div className="already-registered">
                   <a className="label-text-alt">Already registered?</a>
-                  <Link to="/" className="link label-text-alt">
+                  <Link to="/log-in" className="link label-text-alt">
                     Log in
                   </Link>
                 </div>
               </div>
-              <div className="form-control mt-6">
-                <Link to="/home">
-                  <button className="btn btn-primary" onClick={handleSignUp}>
-                    Sign Up
-                  </button>
-                </Link>
+              <div className="mt-6 flex justify-center">
+                <button className="btn btn-primary" onClick={handleSignUp}>
+                  Sign Up
+                </button>
               </div>
             </div>
           </div>
