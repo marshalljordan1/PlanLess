@@ -13,12 +13,12 @@ const NewClassForm = () => {
     <>
       <div className="new-class-form shadow-xl">
         <form onSubmit={handleSubmit}>
-          <div>
+          <div className="class-name-input">
             <div className="form-title">Class Name:</div>
             <input
               type="text"
               placeholder="Beginners"
-              className="input input-bordered border-primary w-full max-w-xs shadow-lg bg-white"
+              className="input input-bordered border-primary w-full shadow-xl bg-white"
               onChange={handleClassName}
               value={className}
             />

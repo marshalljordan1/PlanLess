@@ -57,12 +57,10 @@ const LoginForm = () => {
                   </Link>
                 </div>
               </div>
-              <div className="form-control mt-6">
-                <Link to="/home">
-                  <button className="btn btn-primary" onClick={handleLogin}>
-                    Login
-                  </button>
-                </Link>
+              <div className=" mt-6 flex justify-center">
+                <button className="btn btn-primary" onClick={handleLogin}>
+                  Login
+                </button>
               </div>
             </div>
           </div>

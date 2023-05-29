@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { BsTrash } from "react-icons/bs";
 const ClassCarousel = () => {
   const { classList, handleDelete } = useContext(ClassListContext);
-
   return (
     <>
       {" "}
@@ -16,7 +15,7 @@ const ClassCarousel = () => {
           >
             {classList.map((item) => (
               <div className="carousel-item bg-accent" key={item.id}>
-                <div className="card-body text-base-content shadow-xl pb-4">
+                <div className="card-body carousel-body text-base-content shadow-xl">
                   <h1 className="card-title">
                     {item.className}{" "}
                     <button
@@ -33,7 +32,25 @@ const ClassCarousel = () => {
                     </p>
                     <p>
                       <span className="bold">Start/End Date: </span>
-                      {`${item.startDate} - ${item.endDate}`}
+                      {`${
+                        item.startDate[8] +
+                        item.startDate[9] +
+                        "/" +
+                        item.startDate[5] +
+                        item.startDate[6] +
+                        "/" +
+                        item.startDate[2] +
+                        item.startDate[3]
+                      } - ${
+                        item.endDate[8] +
+                        item.endDate[9] +
+                        "/" +
+                        item.endDate[5] +
+                        item.endDate[6] +
+                        "/" +
+                        item.endDate[2] +
+                        item.endDate[3]
+                      }`}
                     </p>
                     <p>
                       <span className="bold">Schedule: </span>
@@ -42,7 +59,7 @@ const ClassCarousel = () => {
                     </p>
                   </div>
                   <div className="card-actions justify-end">
-                    <button className="btn btn-primary text-white shadow-lg">
+                    <button className="btn btn-primary text-white shadow-lg btn-sm">
                       See Plan
                     </button>
                   </div>
@@ -51,13 +68,14 @@ const ClassCarousel = () => {
             ))}
           </div>
         ) : (
-          <div className="card no-classes bg-accent">
-            <div className="card-body text-base-content shadow-xl">
-              <h1 className="card-title">No Upcoming Classes</h1>
-              <div className="card-info"></div>
+          <div className="card w-96 bg-accent shadow-xl">
+            <div className="card-body">
+              <h2 className="card-title text-secondary-content">
+                No Upcoming Classes
+              </h2>
               <div className="card-actions justify-end">
                 <Link to="/new-class">
-                  <button className="btn btn-primary text-white shadow-lg">
+                  <button className="btn btn-primary text-white shadow-lg btn-sm">
                     Plan
                   </button>
                 </Link>

@@ -1,7 +1,7 @@
 const CommunityCard = () => {
   return (
     <>
-      <div className="card w-96 bg-secondary shadow-xl">
+      <div className="card community-card w-96 bg-secondary shadow-xl">
         <div className="card-body">
           <h2 className="card-title text-secondary-content">
             Explore Plans

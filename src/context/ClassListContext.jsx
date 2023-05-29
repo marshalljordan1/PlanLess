@@ -1,4 +1,5 @@
-import React, { createContext, useState } from "react";
+import React, { useContext, createContext, useState } from "react";
+import { SignUpContext } from "./SignUpContext";
 
 export const ClassListContext = createContext();
 
@@ -14,16 +15,19 @@ export const ClassListContextProvider = ({ children }) => {
   const [submitted, setSubmitted] = useState(false);
   const [id, setId] = useState(0);
 
+  const { teacherName } = useContext(SignUpContext);
+
   const saveData = () => {
     const newClass = {
-      id: id,
-      className: className,
-      level: level,
-      startDate: startDate,
-      endDate: endDate,
-      checkedDays: checkedDays,
-      startTime: startTime,
-      endTime: endTime,
+      id,
+      teacherName,
+      className,
+      level,
+      startDate,
+      endDate,
+      checkedDays,
+      startTime,
+      endTime,
     };
     const existingClasses = JSON.parse(localStorage.getItem("classList")) || [];
     const updatedClasses = [...existingClasses, newClass];
@@ -89,10 +93,12 @@ export const ClassListContextProvider = ({ children }) => {
       setId(id + 1);
       saveData();
       setCheckedDays([]);
-      setStartDate("");
-      setEndDate("");
-      setStartTime("12:00");
-      setEndTime("12:00");
+      setClassName(""); // Reset className
+      setLevel(""); // Reset level
+      setStartDate(""); // Reset startDate
+      setEndDate(""); // Reset endDate
+      setStartTime("12:00"); // Reset startTime
+      setEndTime("12:00"); // Reset endTime
       setSubmitted(true); // Call the saveData function from the context
     }
   };
@@ -123,6 +129,7 @@ export const ClassListContextProvider = ({ children }) => {
         handleDelete,
         classList,
         submitted,
+        teacherName,
       }}
     >
       {children}

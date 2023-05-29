@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const BottomNavbar = () => {
   return (
     <>
-      <div className="bottom-nav bg-primary text-primary-content">
+      <div className="navbar bottom-nav bg-primary text-primary-content">
         <Link to="/home">
           <button>
             <FiHome className="h-5 w-5" />

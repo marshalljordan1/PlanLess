@@ -1,4 +1,5 @@
 import React, { createContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const LoginContext = createContext();
 
@@ -6,6 +7,7 @@ export const LoginContextProvider = ({ children }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [alert, setAlert] = useState(null);
+  const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -24,6 +26,7 @@ export const LoginContextProvider = ({ children }) => {
 
     if (user) {
       setAlert("Login successful");
+      navigate("/home"); // Navigate to the homepage
     } else {
       setAlert("Invalid email or password");
     }
