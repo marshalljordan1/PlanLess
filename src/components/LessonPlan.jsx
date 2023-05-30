@@ -1,22 +1,19 @@
 import React, { useContext, useState } from "react";
 import { ClassListContext } from "../context/ClassListContext";
+import { LessonPlanContext } from "../context/LessonPlanContext";
 
 const LessonPlan = () => {
   const { classList } = useContext(ClassListContext);
+  const { handleActivities, activities, addActivity } =
+    useContext(LessonPlanContext);
   const lastSubmittedClass = classList[classList.length - 1];
-
-  const [counter, setCounter] = useState(1);
-
-  const addActivity = () => {
-    setCounter(counter + 1);
-  };
 
   return (
     <>
-      <div className="carousel-item bg-accent shadow-xl">
+      <div className="carousel-item bg-accent shadow-xl mb-3">
         <div className="card-body carousel-body text-base-content">
           <p>
-            <span className="bold">Class Name: </span>
+            <span className="bold input-title">Class Name: </span>
             {lastSubmittedClass.className}
           </p>
           <p>
@@ -59,38 +56,59 @@ const LessonPlan = () => {
         <input
           type="text"
           placeholder="Today we are going to..."
-          className="input input-bordered input-primary bg-white w-full max-w-xs"
+          className="input input-bordered input-primary bg-white w-full max-w-xs mb-3"
         />
       </div>
       <div>
-        <div className="form-title">Warm up / Intro:</div>
+        <div className="form-title">Warm up / Introduction:</div>
         <input
           type="text"
           placeholder="Introduction"
+          className="input input-bordered input-primary bg-white w-full max-w-xs mb-3"
+        />
+      </div>
+      <div>
+        <div className="form-title">Activity 1:</div>
+        <textarea
+          type="textarea"
+          placeholder="Activity"
           className="input input-bordered input-primary bg-white w-full max-w-xs"
+          value={activities[0]}
+          onChange={(e) => handleActivities(0, e.target.value)}
         />
       </div>
 
-      {counter >= 1 ? (
-        <div>
-          {" "}
-          <div className="form-title">Activity {counter}:</div>
+      {activities.slice(1).map((activity, index) => (
+        <div key={index}>
+          <div className="form-title">Activity {index + 2}:</div>
           <textarea
             type="textarea"
-            placeholder="Activity"
+            placeholder={`Activity ${index + 2}`}
             className="input input-bordered input-primary bg-white w-full max-w-xs"
-          />{" "}
+            value={activity}
+            onChange={(e) => handleActivities(index + 1, e.target.value)}
+          />
         </div>
-      ) : (
-        "null"
-      )}
-
+      ))}
+      <button className="btn btn-primary mb-3 btn-sm" onClick={addActivity}>
+        add activity
+      </button>
       <div>
+        <div className="form-title">Wrap up / Conclusion:</div>
         <input
-          type="file"
-          className="file-input file-input-primary file-input-bordered bg-white file-input-sm w-full max-w-xs mt-5"
+          type="text"
+          placeholder="Final activity"
+          className="input input-bordered input-primary bg-white w-full max-w-xs mb-3"
         />
       </div>
+      <div className="form-title">Add resources:</div>
+      <input
+        type="file"
+        className="file-input file-input-primary file-input-bordered bg-white file-input-sm w-full max-w-xs mb-3"
+      />
+      <button className="btn btn-primary mb-3" onClick={addActivity}>
+        create plan
+      </button>
     </>
   );
 };
