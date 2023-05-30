@@ -5,9 +5,9 @@ export const LessonPlanContext = createContext();
 export const LessonPlanContextProvider = ({ children }) => {
   const [activities, setActivities] = useState([]);
 
-  const handleActivities = (e) => {
+  const handleActivities = (index, value) => {
     const updatedActivities = [...activities];
-    updatedActivities[index] = e.target.value;
+    updatedActivities[index] = value;
     setActivities(updatedActivities);
   };
 

@@ -1,12 +1,25 @@
 import React, { useContext, useState } from "react";
 import { ClassListContext } from "../context/ClassListContext";
 import { LessonPlanContext } from "../context/LessonPlanContext";
+import {
+  PDFDownloadLink,
+  Page,
+  Text,
+  Document,
+  StyleSheet,
+  Font,
+} from "@react-pdf/renderer";
 
 const LessonPlan = () => {
   const { classList } = useContext(ClassListContext);
   const { handleActivities, activities, addActivity } =
     useContext(LessonPlanContext);
   const lastSubmittedClass = classList[classList.length - 1];
+  const [generatePDF, setGeneratePDF] = useState(false);
+
+  const generatePDFHandler = () => {
+    setGeneratePDF(true);
+  };
 
   return (
     <>
@@ -67,6 +80,7 @@ const LessonPlan = () => {
           className="input input-bordered input-primary bg-white w-full max-w-xs mb-3"
         />
       </div>
+
       <div>
         <div className="form-title">Activity 1:</div>
         <textarea
@@ -106,11 +120,64 @@ const LessonPlan = () => {
         type="file"
         className="file-input file-input-primary file-input-bordered bg-white file-input-sm w-full max-w-xs mb-3"
       />
-      <button className="btn btn-primary mb-3" onClick={addActivity}>
+      <button className="btn btn-primary mb-3" onClick={generatePDFHandler}>
         create plan
       </button>
+      {generatePDF && (
+        <PDFDownloadLink
+          document={<MyDocument classInfo={lastSubmittedClass} />}
+          fileName={`${lastSubmittedClass.className}.pdf`}
+        >
+          {({ blob, url, loading, error }) =>
+            loading ? "Loading document..." : "Download PDF"
+          }
+        </PDFDownloadLink>
+      )}
     </>
   );
 };
 
+const MyDocument = ({ classInfo, activities }) => {
+  Font.register({
+    family: "Oswald",
+    src: "https://fonts.gstatic.com/s/oswald/v13/Y_TKV6o8WovbUd3m_X9aAA.ttf",
+  });
+
+  const styles = StyleSheet.create({
+    body: {
+      paddingTop: 35,
+      paddingBottom: 65,
+      paddingHorizontal: 35,
+    },
+    title: {
+      fontSize: 24,
+      textAlign: "center",
+      fontFamily: "Oswald",
+    },
+    text: {
+      margin: 12,
+      fontSize: 14,
+      textAlign: "justify",
+      fontFamily: "Times-Roman",
+    },
+    header: {
+      fontSize: 12,
+      marginBottom: 20,
+      textAlign: "center",
+      color: "grey",
+    },
+  });
+  return (
+    <Document>
+      <Page style={styles.body}>
+        <Text style={styles.header} fixed>
+          PlanLess
+        </Text>
+        <Text style={styles.title}>Class Name: {classInfo.className}</Text>
+        <Text style={styles.title}>Level: {classInfo.level}</Text>
+        <Text style={styles.text}>Activity 1: {activities}</Text>
+      </Page>
+    </Document>
+  );
+};
 export default LessonPlan;
