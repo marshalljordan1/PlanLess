@@ -19,8 +19,8 @@ export const ClassListContextProvider = ({ children }) => {
 
   const saveData = () => {
     const newClass = {
-      id,
-      teacherName,
+      id: id,
+      teacherName: teacherName,
       className,
       level,
       startDate,

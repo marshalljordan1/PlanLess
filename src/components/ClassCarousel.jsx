@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { ClassListContext } from "../context/ClassListContext";
 import { Link } from "react-router-dom";
 import { BsTrash } from "react-icons/bs";
+
 const ClassCarousel = () => {
   const { classList, handleDelete } = useContext(ClassListContext);
   return (

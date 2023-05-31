@@ -5,20 +5,198 @@ import {
   PDFDownloadLink,
   Page,
   Text,
+  Image,
+  View,
   Document,
   StyleSheet,
   Font,
+  pdf,
 } from "@react-pdf/renderer";
+import lineCalendar from "../assets/line-calendar.png";
+import ShantellSansFontLight from "../assets/ShantellSansLight.ttf";
+import ShantellSansFontRegular from "../assets/ShantellSans-Regular.ttf";
+import blob2 from "../assets/blob2.svg";
+import storage from "../firebaseConfig";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+
+const styles = StyleSheet.create({
+  body: {
+    paddingTop: 35,
+    paddingBottom: 65,
+    paddingHorizontal: 35,
+    backgroundImage: `url(${blob2})`,
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+  },
+  image: {
+    marginHorizontal: 190,
+    marginTop: -40,
+    width: 150,
+  },
+  title: {
+    color: "#5a7c65",
+    margin: 15,
+    fontSize: 24,
+    textAlign: "center",
+    fontFamily: "ShantellSans",
+    fontStyle: "regular",
+  },
+  text: {
+    margin: 10,
+    fontSize: 14,
+    textAlign: "justify",
+    fontFamily: "ShantellSans",
+    fontStyle: "light",
+    marginHorizontal: 20,
+    display: "flex",
+    flexWrap: "wrap",
+  },
+  header: {
+    fontSize: 12,
+    marginBottom: 20,
+    textAlign: "center",
+    color: "grey",
+  },
+  subtitle: {
+    color: "#5a7c65",
+    fontSize: 18,
+    margin: 12,
+    fontFamily: "ShantellSans",
+    fontStyle: "regular",
+  },
+  objective: {
+    margin: 10,
+    fontSize: 16,
+    textAlign: "justify",
+    fontFamily: "ShantellSans",
+    fontStyle: "regular",
+    marginHorizontal: 20,
+    display: "flex",
+    flexWrap: "wrap",
+  },
+  inlineSpaceBetween: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  pageNumber: {
+    position: "absolute",
+    fontSize: 12,
+    bottom: 30,
+    left: 0,
+    right: 0,
+    textAlign: "center",
+    color: "grey",
+  },
+});
 
 const LessonPlan = () => {
   const { classList } = useContext(ClassListContext);
-  const { handleActivities, activities, addActivity } =
-    useContext(LessonPlanContext);
+  const {
+    handleActivities,
+    activities,
+    addActivity,
+    lessonObjective,
+    addObjective,
+    wrapUp,
+    addWrapUp,
+    warmUp,
+    addWarmUp,
+  } = useContext(LessonPlanContext);
   const lastSubmittedClass = classList[classList.length - 1];
   const [generatePDF, setGeneratePDF] = useState(false);
+  const today = new Date().toLocaleDateString();
 
-  const generatePDFHandler = () => {
+  const generatePDFHandler = async () => {
     setGeneratePDF(true);
+
+    try {
+      const pdfBlob = await generatePDFBlob(); // Generate the PDF blob using a separate function
+      savePDFToFirebase(pdfBlob); // Save the PDF blob to Firebase Storage
+    } catch (error) {
+      console.error("Error generating or saving the PDF:", error);
+    }
+  };
+
+  const generatePDFBlob = () => {
+    return new Promise((resolve, reject) => {
+      const MyDocument = ({
+        classInfo,
+        activities,
+        lessonObjective,
+        wrapUp,
+        warmUp,
+      }) => (
+        <Document>
+          <Page style={styles.body}>
+            <Text style={styles.header} fixed>
+              PlanLess
+            </Text>
+            <Image style={styles.image} src={lineCalendar} />
+            <View style={styles.inlineSpaceBetween}>
+              <Text style={styles.title}>
+                Class Name: {classInfo.className}
+              </Text>
+              <Text style={styles.title}>Level: {classInfo.level}</Text>
+            </View>
+            <Text style={styles.subtitle}>Lesson objectives: </Text>
+            <Text style={styles.objective}>{lessonObjective}</Text>
+            <Text style={styles.subtitle}>Warm Up: </Text>
+            <Text style={styles.text}>{warmUp}</Text>
+            {activities.map((activity, index) => (
+              <>
+                <Text key={index} style={styles.subtitle}>
+                  Activity {index + 1}:{" "}
+                </Text>
+                <Text style={styles.text}>{activity}</Text>
+              </>
+            ))}
+            <Text style={styles.subtitle}>Wrap Up: </Text>
+            <Text style={styles.text}>{wrapUp}</Text>
+            <Text style={styles.pageNumber} fixed>
+              Planned by: {classInfo.teacherName} on {today}
+            </Text>
+          </Page>
+        </Document>
+      );
+
+      const blobPromise = pdf(
+        <MyDocument
+          classInfo={lastSubmittedClass}
+          activities={activities}
+          lessonObjective={lessonObjective}
+          wrapUp={wrapUp}
+          warmUp={warmUp}
+        />
+      ).toBlob();
+
+      blobPromise.then((blob) => resolve(blob)).catch((error) => reject(error));
+    });
+  };
+
+  const savePDFToFirebase = (pdfBlob) => {
+    const storageRef = ref(
+      storage,
+      `/files/${lastSubmittedClass.className}.pdf`
+    );
+
+    const uploadTask = uploadBytesResumable(storageRef, pdfBlob);
+
+    uploadTask.on(
+      "state_changed",
+      (error) => {
+        console.error("Error uploading the PDF:", error);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref)
+          .then((url) => {
+            console.log("PDF download URL:", url);
+          })
+          .catch((error) => {
+            console.error("Error getting the download URL:", error);
+          });
+      }
+    );
   };
 
   return (
@@ -70,6 +248,8 @@ const LessonPlan = () => {
           type="text"
           placeholder="Today we are going to..."
           className="input input-bordered input-primary bg-white w-full max-w-xs mb-3"
+          value={lessonObjective}
+          onChange={(e) => addObjective(e.target.value)}
         />
       </div>
       <div>
@@ -78,6 +258,8 @@ const LessonPlan = () => {
           type="text"
           placeholder="Introduction"
           className="input input-bordered input-primary bg-white w-full max-w-xs mb-3"
+          value={warmUp}
+          onChange={(e) => addWarmUp(e.target.value)}
         />
       </div>
 
@@ -113,6 +295,8 @@ const LessonPlan = () => {
           type="text"
           placeholder="Final activity"
           className="input input-bordered input-primary bg-white w-full max-w-xs mb-3"
+          value={wrapUp}
+          onChange={(e) => addWrapUp(e.target.value)}
         />
       </div>
       <div className="form-title">Add resources:</div>
@@ -125,7 +309,16 @@ const LessonPlan = () => {
       </button>
       {generatePDF && (
         <PDFDownloadLink
-          document={<MyDocument classInfo={lastSubmittedClass} />}
+          document={
+            <MyDocument
+              classInfo={lastSubmittedClass}
+              activities={activities}
+              lessonObjective={lessonObjective}
+              wrapUp={wrapUp}
+              warmUp={warmUp}
+              today={today}
+            />
+          }
           fileName={`${lastSubmittedClass.className}.pdf`}
         >
           {({ blob, url, loading, error }) =>
@@ -137,35 +330,24 @@ const LessonPlan = () => {
   );
 };
 
-const MyDocument = ({ classInfo, activities }) => {
+const MyDocument = ({
+  classInfo,
+  activities,
+  lessonObjective,
+  wrapUp,
+  warmUp,
+  today,
+}) => {
   Font.register({
-    family: "Oswald",
-    src: "https://fonts.gstatic.com/s/oswald/v13/Y_TKV6o8WovbUd3m_X9aAA.ttf",
-  });
-
-  const styles = StyleSheet.create({
-    body: {
-      paddingTop: 35,
-      paddingBottom: 65,
-      paddingHorizontal: 35,
-    },
-    title: {
-      fontSize: 24,
-      textAlign: "center",
-      fontFamily: "Oswald",
-    },
-    text: {
-      margin: 12,
-      fontSize: 14,
-      textAlign: "justify",
-      fontFamily: "Times-Roman",
-    },
-    header: {
-      fontSize: 12,
-      marginBottom: 20,
-      textAlign: "center",
-      color: "grey",
-    },
+    family: "ShantellSans",
+    fonts: [
+      { src: ShantellSansFontLight, fontStyle: "light", format: "truetype" },
+      {
+        src: ShantellSansFontRegular,
+        fontStyle: "regular",
+        format: "truetype",
+      },
+    ],
   });
   return (
     <Document>
@@ -173,9 +355,28 @@ const MyDocument = ({ classInfo, activities }) => {
         <Text style={styles.header} fixed>
           PlanLess
         </Text>
-        <Text style={styles.title}>Class Name: {classInfo.className}</Text>
-        <Text style={styles.title}>Level: {classInfo.level}</Text>
-        <Text style={styles.text}>Activity 1: {activities}</Text>
+        <Image style={styles.image} src={lineCalendar} />
+        <View style={styles.inlineSpaceBetween}>
+          <Text style={styles.title}>Class Name: {classInfo.className}</Text>
+          <Text style={styles.title}>Level: {classInfo.level}</Text>
+        </View>
+        <Text style={styles.subtitle}>Lesson objectives: </Text>
+        <Text style={styles.objective}>{lessonObjective}</Text>
+        <Text style={styles.subtitle}>Warm Up: </Text>
+        <Text style={styles.text}>{warmUp}</Text>
+        {activities.map((activity, index) => (
+          <React.Fragment>
+            <Text key={index} style={styles.subtitle}>
+              Activity {index + 1}:{" "}
+            </Text>
+            <Text style={styles.text}>{activity}</Text>
+          </React.Fragment>
+        ))}
+        <Text style={styles.subtitle}>Wrap Up: </Text>
+        <Text style={styles.text}>{wrapUp}</Text>
+        <Text style={styles.pageNumber} fixed>
+          Planned by: {classInfo.teacherName} on {today}
+        </Text>
       </Page>
     </Document>
   );

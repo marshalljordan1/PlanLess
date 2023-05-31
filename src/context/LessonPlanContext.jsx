@@ -4,6 +4,9 @@ export const LessonPlanContext = createContext();
 
 export const LessonPlanContextProvider = ({ children }) => {
   const [activities, setActivities] = useState([]);
+  const [lessonObjective, setLessonObjective] = useState("");
+  const [wrapUp, setWrapUp] = useState("");
+  const [warmUp, setWarmUp] = useState("");
 
   const handleActivities = (index, value) => {
     const updatedActivities = [...activities];
@@ -15,10 +18,32 @@ export const LessonPlanContextProvider = ({ children }) => {
     setActivities([...activities, ""]);
   };
 
+  const addObjective = (value) => {
+    setLessonObjective(value);
+  };
+
+  const addWrapUp = (value) => {
+    setWrapUp(value);
+  };
+
+  const addWarmUp = (value) => {
+    setWarmUp(value);
+  };
+
   return (
     <>
       <LessonPlanContext.Provider
-        value={{ handleActivities, activities, addActivity }}
+        value={{
+          handleActivities,
+          activities,
+          addActivity,
+          lessonObjective,
+          addObjective,
+          wrapUp,
+          addWrapUp,
+          warmUp,
+          addWarmUp,
+        }}
       >
         {children}
       </LessonPlanContext.Provider>
