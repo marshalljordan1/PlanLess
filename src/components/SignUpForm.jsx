@@ -28,7 +28,7 @@ const SignUpForm = () => {
               {alert && <div className="alert">{alert}</div>}
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Full Name</span>
+                  <span className="label-text input-title">Full Name</span>
                 </label>
                 <input
                   type="name"
@@ -38,21 +38,52 @@ const SignUpForm = () => {
                   onChange={handleTeacherName}
                 />
               </div>
-              <div className="form-control">
+              <div>
                 <label className="label">
-                  <span className="label-text">Subject</span>
+                  <span className="label-text input-title">Subject</span>
                 </label>
-                <input
-                  type="name"
-                  placeholder="Subject"
-                  className="input input-bordered"
+
+                <select
+                  className="select select-primary w-full max-w-xs"
                   value={subject}
-                  onChange={handleSubject}
-                />
+                  onChange={(e) => handleSubject(e.target.value)}
+                >
+                  <option value="" disabled>
+                    What subject do you teach?
+                  </option>
+                  <option value="English">English</option>
+                  <option value="Maths" disabled>
+                    Maths
+                  </option>
+                  <option value="Science" disabled>
+                    Science
+                  </option>
+                  <option value="Art" disabled>
+                    Art
+                  </option>
+                  <option value="History" disabled>
+                    History
+                  </option>
+                  <option value="Geography" disabled>
+                    Geography
+                  </option>
+                  <option value="Music" disabled>
+                    Music
+                  </option>
+                  <option value="P.E." disabled>
+                    P.E.
+                  </option>
+                  <option value="Technology" disabled>
+                    Technology
+                  </option>
+                  <option value="Drama" disabled>
+                    Drama
+                  </option>
+                </select>
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Email</span>
+                  <span className="label-text input-title">Email</span>
                 </label>
                 <input
                   type="text"
@@ -64,7 +95,7 @@ const SignUpForm = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Password</span>
+                  <span className="label-text input-title">Password</span>
                 </label>
                 <input
                   type="password"

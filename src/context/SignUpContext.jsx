@@ -23,8 +23,9 @@ export const SignUpContextProvider = ({ children }) => {
     setTeacherName(event.target.value);
   };
 
-  const handleSubject = (event) => {
-    setSubject(event.target.value);
+  const handleSubject = (selectedSubject) => {
+    console.log(selectedSubject);
+    setSubject(selectedSubject);
   };
 
   const handleSignUp = () => {

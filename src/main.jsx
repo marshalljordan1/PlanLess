@@ -6,15 +6,18 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { ClassListContextProvider } from "./context/ClassListContext.jsx";
 import { LoginContextProvider } from "./context/LoginContext.jsx";
 import { SignUpContextProvider } from "./context/SignUpContext.jsx";
+import { LessonPlanContextProvider } from "./context/LessonPlanContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Router>
       <SignUpContextProvider>
         <LoginContextProvider>
-          <ClassListContextProvider>
-            <App />
-          </ClassListContextProvider>
+          <LessonPlanContextProvider>
+            <ClassListContextProvider>
+              <App />
+            </ClassListContextProvider>
+          </LessonPlanContextProvider>
         </LoginContextProvider>
       </SignUpContextProvider>
     </Router>

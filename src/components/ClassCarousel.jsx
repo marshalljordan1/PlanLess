@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { ClassListContext } from "../context/ClassListContext";
 import { Link } from "react-router-dom";
 import { BsTrash } from "react-icons/bs";
+
 const ClassCarousel = () => {
   const { classList, handleDelete } = useContext(ClassListContext);
   return (
@@ -14,9 +15,12 @@ const ClassCarousel = () => {
             key={classList.id}
           >
             {classList.map((item) => (
-              <div className="carousel-item bg-accent" key={item.id}>
+              <div
+                className="carousel-item bg-accent text-accent-content shadow-xl"
+                key={item.id}
+              >
                 <div className="card-body carousel-body text-base-content shadow-xl">
-                  <h1 className="card-title">
+                  <h1 className="card-title text-accent-content">
                     {item.className}{" "}
                     <button
                       className="btn btn-sm btn-square btn-secondary text-secondary-content shadow-lg"

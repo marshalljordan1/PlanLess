@@ -11,7 +11,7 @@ const TopNavbar = () => {
       <div className="w-10 h-10 rounded-full ms-1 border border-primary-content"></div>
       <div className="flex-1">
         <div className="ms-3">
-          <p className="ms-3 teacher-name text-base-100 text-xl text-primary-content">
+          <p className="ms-3 teacher-name text-base-100 text-sm text-primary-content">
             {teacherName}
           </p>
           <p className="ms-3 teacher-name text-base-100 text-xs text-primary-content">
